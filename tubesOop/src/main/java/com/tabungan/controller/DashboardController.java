@@ -107,6 +107,28 @@ public class DashboardController {
         return false; // Mengembalikan false jika gagal
     }
   }
+    
+    public List<Dashboard> searchTabungan(String username, String keyword) {
+    String query = "SELECT * FROM tabungan WHERE username = ? AND nama_tabungan LIKE ?";
+    List<Dashboard> daftarTabungan = new ArrayList<>();
+    try (Connection conn = conMan.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+        stmt.setString(1, username);
+        stmt.setString(2, "%" + keyword + "%");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            daftarTabungan.add(new Dashboard(
+                rs.getString("username"),
+                rs.getString("nama_tabungan"),
+                rs.getDouble("target_tabungan"),
+                rs.getDouble("total_terkumpul")
+            ));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return daftarTabungan;
+}
+
 }
 
 

@@ -17,7 +17,7 @@ public class ConnectionManager {
     // URL, username, dan password untuk koneksi ke database
     private static final String URL = "jdbc:mysql://localhost:3306/aplikasi_kutabung"; // Ganti dengan nama database Anda
     private static final String USER = "root"; // Ganti dengan username database Anda
-    private static final String PASSWORD = "basdat2024"; // Ganti dengan password database Anda
+    private static final String PASSWORD = "BASDAT2024"; // Ganti dengan password database Anda
 
     
     // Metode untuk mendapatkan koneksi ke database
